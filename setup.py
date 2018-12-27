@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='pandas-sets',
-    version='v0.1.0',
+    version='v0.1.1',
     packages=find_packages(),
     license='BSD',
     description='Pandas - Sets:  Set-oriented Operations in Pandas',
