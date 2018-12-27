@@ -243,25 +243,33 @@ class SetMethods(NoNewAttributesMixin):
         return self._wrap_result(result)
 
     def union(self, *others):
-        f = lambda x: x.union(others)
+        def f(x):
+            return x.union(*others)
+
         result = _na_map(f, self._data)
 
         return self._wrap_result(result)
 
     def intersection(self, *others):
-        f = lambda x: x.intersection(others)
+        def f(x):
+            return x.intersection(*others)
+
         result = _na_map(f, self._data)
 
         return self._wrap_result(result)
 
     def difference(self, *others):
-        f = lambda x: x.difference(others)
+        def f(x):
+            return x.difference(*others)
+
         result = _na_map(f, self._data)
 
         return self._wrap_result(result)
 
     def symmetric_difference(self, other):
-        f = lambda x: x.symmetric_difference(other)
+        def f(x):
+            return x.symmetric_difference(other)
+
         result = _na_map(f, self._data)
 
         return self._wrap_result(result)
