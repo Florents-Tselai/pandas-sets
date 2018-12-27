@@ -16,6 +16,6 @@ setup(
     long_description_content_type="text/markdown",
     author='Florents Tselai',
     author_email='florents@tselai.com',
-    url='http://tselai.com',
+    url='https://github.com/Florents-Tselai/pandas-sets',
     install_requires=open('requirements.txt').read().splitlines()
 )
