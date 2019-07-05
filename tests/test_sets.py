@@ -25,6 +25,14 @@ class APITestCase(TestCase):
         })
 
     @property
+    def frozenset_no_na_with_empty(self):
+        return Series({
+            'a': frozenset([1]),
+            'b': frozenset([3, 4, 5]),
+            'c': frozenset([])
+        })
+
+    @property
     def simple_case_no_na_without_empty(self):
         return Series({
             'a': set([1]),
@@ -85,3 +93,10 @@ class APITestCase(TestCase):
                                    'a': 0,
                                    'b': 2
                                }))
+
+    def test_frozensets_are_allowed(self):
+        tm.assert_series_equal(self.frozenset_no_na_with_empty.set.contains(1), Series({
+            'a': True,
+            'b': False,
+            'c': False
+        }))
