@@ -1,6 +1,6 @@
 from unittest import TestCase
 import pandas_sets
-import pandas.util.testing as tm
+from pandas.testing import assert_series_equal
 from pandas import Series, DataFrame
 
 """
@@ -44,28 +44,28 @@ class APITestCase(TestCase):
         pass
 
     def test_len(self):
-        tm.assert_series_equal(self.simple_case_no_na_with_empty.set.len(), Series({
+        assert_series_equal(self.simple_case_no_na_with_empty.set.len(), Series({
             'a': 1,
             'b': 3,
             'c': 0
         }))
 
     def test_add(self):
-        tm.assert_series_equal(self.simple_case_no_na_with_empty.set.add(1), Series({
+        assert_series_equal(self.simple_case_no_na_with_empty.set.add(1), Series({
             'a': {1},
             'b': {1, 3, 4, 5},
             'c': {1}
         }))
 
     def test_contains(self):
-        tm.assert_series_equal(self.simple_case_no_na_with_empty.set.contains(1), Series({
+        assert_series_equal(self.simple_case_no_na_with_empty.set.contains(1), Series({
             'a': True,
             'b': False,
             'c': False
         }))
 
     def test_isdisjoint(self):
-        tm.assert_series_equal(self.simple_case_no_na_with_empty.set.isdisjoint({3, 4}),
+        assert_series_equal(self.simple_case_no_na_with_empty.set.isdisjoint({3, 4}),
                                Series({
                                    'a': True,
                                    'b': False,
@@ -88,14 +88,14 @@ class APITestCase(TestCase):
             self.simple_case_no_na_with_empty.set.pop()
 
         s = self.simple_case_no_na_without_empty.set.pop()
-        tm.assert_series_equal(s.set.len(),
+        assert_series_equal(s.set.len(),
                                Series({
                                    'a': 0,
                                    'b': 2
                                }))
 
     def test_frozensets_are_allowed(self):
-        tm.assert_series_equal(self.frozenset_no_na_with_empty.set.contains(1), Series({
+        assert_series_equal(self.frozenset_no_na_with_empty.set.contains(1), Series({
             'a': True,
             'b': False,
             'c': False

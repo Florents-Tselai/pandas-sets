@@ -122,7 +122,7 @@ class SetMethods(NoNewAttributesMixin):
                      name=None, expand=None):
 
         # TODO: this was blindly copied from `strings.StringMethods._wrap_result` for noew
-        from pandas.core.index import Index, MultiIndex
+        from pandas import Index, MultiIndex
 
         # for category, we do the stuff on the categories, so blow it up
         # to the full series again
