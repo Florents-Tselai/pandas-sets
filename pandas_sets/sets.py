@@ -5,6 +5,7 @@ from pandas.core.common import ABCSeries
 from pandas.core.dtypes.common import is_bool_dtype
 from pandas.core.dtypes.common import is_list_like
 from pandas.core.dtypes.common import is_object_dtype
+import numpy as np
 
 copy = strings.copy
 
@@ -13,8 +14,8 @@ def is_set_type(data):
     return isinstance(data, set) or isinstance(data, frozenset)
 
 
-def _map(*args, **kwargs):
-    return strings._map(*args, **kwargs)
+#def _map(*args, **kwargs):
+#    return strings._map(*args, **kwargs)
 
 
 def _na_map(*args, **kwargs):
@@ -78,7 +79,7 @@ def set_add(arr, elem):
         x.add(elem)
         return x
 
-    return _map(f, arr)
+    return _na_map(f, arr)
 
 
 def set_remove(arr, elem):
