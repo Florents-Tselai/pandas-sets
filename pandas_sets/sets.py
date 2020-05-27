@@ -10,7 +10,7 @@ copy = strings.copy
 
 
 def is_set_type(data):
-    return isinstance(data, set)
+    return isinstance(data, set) or isinstance(data, frozenset)
 
 
 def _map(*args, **kwargs):
@@ -208,10 +208,10 @@ class SetMethods(NoNewAttributesMixin):
                 and data.map(is_list_like).all()
                 and data.map(is_set_type).all()
         ):
-            raise AttributeError("Can only use .set accessor with object dtype."
-                                 "All values must be of `set` type too."
-                                 "Null values` are rejected. "
-                                 "Better use something like fillna([]) before.")
+            raise AttributeError("Can only use .set accessor with object dtype. "
+                                 "All values must be of `set` or `frozenset` type too. "
+                                 "Null values` are rejected, "
+                                 "so use something like fillna([]) before.")
 
     def len(self):
         # TODO make it use _no_args_wrapper like the StringMethods equivalent does

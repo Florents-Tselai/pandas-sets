@@ -1,11 +1,11 @@
 # Pandas Sets: Set-oriented Operations in Pandas
 
-If you store standard Python `set`s in your `Series` or `DataFrame` objects, you'll find this useful.
+If you store standard Python `set`s or `frozenset`s in your `Series` or `DataFrame` objects, you'll find this useful.
 
 The `pandas_sets` package adds a `.set` accessor to any pandas `Series` object;
 it's like `.dt` for `datetime` or `.str` for `string`, but for [`set`](https://docs.python.org/3.7/library/stdtypes.html#set).
 
-It exposes all public methods available in the standard [`set`](https://docs.python.org/3.7/library/stdtypes.html#set). 
+It exposes all public methods available in the standard [`set`](https://docs.python.org/3.7/library/stdtypes.html#set).
 
 ## Installation
 ```bash
@@ -24,7 +24,7 @@ import pandas as pd
 df = pd.DataFrame({'post': [1, 2, 3, 4],
                     'tags': [{'python', 'pandas'}, {'philosophy', 'strategy'}, {'scikit-learn'}, {'pandas'}]
                    })
-                   
+
 pandas_posts = df[df.tags.set.contains('pandas')]
 
 pandas_posts.tags.set.add('data')
